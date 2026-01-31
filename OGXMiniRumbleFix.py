@@ -7,8 +7,6 @@ VID = 0x045E
 PID = 0x0291 or 0x0289
 
 RUMBLE_ENABLE = bytes([0x00, 0x00, 0x08, 0x01])
-RUMBLE_ON     = bytes([0x00, 0x01, 0x0F, 0xC0])
-RUMBLE_OFF    = bytes([0x00, 0x01, 0x00, 0x00])
 
 def main():
     dev = usb.core.find(idVendor=VID, idProduct=PID)
@@ -41,10 +39,6 @@ def main():
 
     dev.write(ep.bEndpointAddress, RUMBLE_ENABLE)
     time.sleep(0.05)
-
-    dev.write(ep.bEndpointAddress, RUMBLE_ON)
-    time.sleep(0.25)
-    dev.write(ep.bEndpointAddress, RUMBLE_OFF)
 
     usb.util.release_interface(dev, intf_num)
     usb.util.dispose_resources(dev)
