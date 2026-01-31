@@ -1,4 +1,4 @@
-# OGX-Mini Rumble Fix
+# OGX-Mini Xbox 360 Controller Rumble Fix
 OGX-Mini Xbox 360 Controller rumble fix Python script for Linux (may work under other operating systems, but is unsupported). Requires pyusb (python-pyusb) as a dependency.
 
 ## How to use:
