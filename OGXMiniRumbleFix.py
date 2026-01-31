@@ -5,12 +5,12 @@ import sys
 
 VID = 0x045E
 PID = 0x0291 
-PID2 = 0x0289
+PID_2 = 0x0289
 
 RUMBLE_ENABLE = bytes([0x00, 0x00, 0x08, 0x01])
 
 def main():
-    dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID2)
+    dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID_2)
     if dev is None:
         print("Xbox 360 controller / wireless receiver not found!")
         sys.exit(1)
