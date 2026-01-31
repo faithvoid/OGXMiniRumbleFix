@@ -11,7 +11,7 @@ RUMBLE_ENABLE = bytes([0x00, 0x00, 0x08, 0x01])
 def main():
     dev = usb.core.find(idVendor=VID, idProduct=PID)
     if dev is None:
-        print("Receiver / Controller not found!")
+        print("Xbox 360 controller / wireless receiver not found!")
         sys.exit(1)
 
     cfg = dev.get_active_configuration()
@@ -43,7 +43,7 @@ def main():
     usb.util.release_interface(dev, intf_num)
     usb.util.dispose_resources(dev)
 
-    print("Rumble should be fixed! Unplug + Replug the controller and visit the URL below to test vibration:")
+    print("Xbox 360 controller rumble should be fixed! Unplug + Replug the controller and visit the URL below to test vibration:")
     print("https://hardwaretester.com/gamepad")
 
 if __name__ == "__main__":
