@@ -3,15 +3,16 @@ import usb.util
 import time
 import sys
 
-VID = 0x045E
-PID = 0x0291 
-PIDTWO = 0x0289
-PIDTHREE = 0x0719
+VID = 0x045E # Microsoft VID, may require changing for third-party controllers.
+PID_WIRED = 0x028E # Genuine wired Xbox 360 controller PID
+PID_W = 0x0719 # Genuine Xbox 360 wireless adapter PID
+PID_GENERIC = 0x0291 # Third-party wireless adapter PID
+PID = 0x0289 # Third-party(?) Xbox 360 controller PID
 
 RUMBLE_ENABLE = bytes([0x00, 0x00, 0x08, 0x01])
 
 def main():
-    dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PIDTWO) or usb.core.find(idVendor=VID, idProduct=PIDTHREE)
+    dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC) or usb.core.find(idVendor=VID, idProduct=PID_W) or usb.core.find(idVendor=VID, idProduct=PID_WIRED)
     if dev is None:
         print("Xbox 360 controller / wireless receiver not found!")
         sys.exit(1)
