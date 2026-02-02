@@ -79,7 +79,7 @@ by [''' +
         print("https://hardwaretester.com/gamepad" + "\n")
 
     else:
-        print("Xbox 360 controller rumble should be fixed! Unplug + Replug the controller check your vibration in the browser window!")
+        print("Xbox 360 controller rumble should be fixed! Unplug + Replug the controller and check your vibration in the browser window!")
         webbrowser.open(GAMEPAD_URL)
 
 if __name__ == "__main__":
