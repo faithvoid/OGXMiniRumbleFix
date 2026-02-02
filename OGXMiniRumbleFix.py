@@ -38,9 +38,6 @@ by [''' +
 
 ''')
 
-
-
-
     dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC) or usb.core.find(idVendor=VID, idProduct=PID_W) or usb.core.find(idVendor=VID, idProduct=PID_WIRED)
     if dev is None:
         print("Xbox 360 controller / wireless receiver not found! Please reconnect your controller and try again.")
