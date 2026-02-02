@@ -12,9 +12,39 @@ PID = 0x0289 # Third-party(?) Xbox 360 controller PID
 RUMBLE_ENABLE = bytes([0x00, 0x00, 0x08, 0x01])
 
 def main():
+
+    print('''
+⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣶⣶⣶⣶⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡀⠀⠈⠉⠛⠿⣿⣿⣿⣿⠿⠛⠉⠁⠀⢀⠀⠀⠀⠀⠀
+⠀⠀⠀⣴⣿⣿⣿⣶⣄⡀⠀⠈⠙⠋⠁⠀⢀⣠⣶⣿⣿⣿⣦⠀⠀⠀
+⠀⢀⣾⣿⣿⣿⣿⣿⣿⡿⠂⠀⠀⠀⠀⠐⢿⣿⣿⣿⣿⣿⣿⣷⡀⠀
+⠀⣾⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⢀⡀⠀⠀⠀⠙⣿⣿⣿⣿⣿⣿⣷⠀
+⢠⣿⣿⣿⣿⣿⡟⠁⠀⠀⢀⣴⣿⣿⣦⡀⠀⠀⠈⢻⣿⣿⣿⣿⣿⡄
+⢸⣿⣿⣿⣿⠏⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠹⣿⣿⣿⣿⡇
+⠘⣿⣿⣿⠏⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠹⣿⣿⣿⠃
+⠀⢿⣿⡟⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⢻⣿⡿⠀
+⠀⠈⢿⡇⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⢸⡿⠁⠀
+⠀⠀⠀⠃⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠘⠀⠀⠀
+⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠿⠿⠿⠿⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀
+
+[''' + 
+    '\033]8;;https://github.com/faithvoid/OGXMiniRumbleFix\033\\OGX-Mini Rumble Fix v1.0\033]8;;\033\\' +
+''']
+
+by [''' + 
+    '\033]8;;https://github.com/faithvoid\033\\faithvoid\033]8;;\033\\'
+''']
+
+''')
+
+
+
+
     dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC) or usb.core.find(idVendor=VID, idProduct=PID_W) or usb.core.find(idVendor=VID, idProduct=PID_WIRED)
     if dev is None:
-        print("Xbox 360 controller / wireless receiver not found!")
+        print("Xbox 360 controller / wireless receiver not found! Please reconnect your controller and try again.")
+        print("If that doesn't work, find the VID and PID of your controller and replace PID and VID values in the script and retry!\n")
         sys.exit(1)
 
     cfg = dev.get_active_configuration()
@@ -39,15 +69,15 @@ def main():
         sys.exit(2)
 
     usb.util.claim_interface(dev, intf_num)
-
+    print('Initializing...\n')
     dev.write(ep.bEndpointAddress, RUMBLE_ENABLE)
     time.sleep(0.05)
 
     usb.util.release_interface(dev, intf_num)
     usb.util.dispose_resources(dev)
 
-    print("Xbox 360 controller rumble should be fixed! Unplug + Replug the controller and visit the URL below to test vibration:")
-    print("https://hardwaretester.com/gamepad")
+    print("Xbox 360 controller rumble should be fixed! Unplug + Replug the controller and visit the URL below to test vibration:\n")
+    print("https://hardwaretester.com/gamepad" + "\n")
 
 if __name__ == "__main__":
     main()
