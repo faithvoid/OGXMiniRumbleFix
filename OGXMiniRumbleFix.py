@@ -4,7 +4,7 @@ VID = 0x045E # Microsoft VID, may require changing for third-party controllers.
 PID_WIRED = 0x028E # Genuine wired Xbox 360 controller PID
 PID_W = 0x0719 # Genuine Xbox 360 wireless adapter PID
 PID_GENERIC = 0x0291 # Third-party wireless adapter PID
-PID_GENERIC2 = 0x02AA # Additional third-party wireless adapter PID
+PID_GENERIC_TWO = 0x02AA # Additional third-party wireless adapter PID
 PID = 0x0289 # Third-party(?) Xbox 360 controller PID
 GAMEPAD_URL = "https://hardwaretester.com/gamepad"
 
@@ -37,7 +37,7 @@ by [''' +
 
 ''')
 
-    dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC2) or usb.core.find(idVendor=VID, idProduct=PID_W) or usb.core.find(idVendor=VID, idProduct=PID_WIRED)
+    dev = usb.core.find(idVendor=VID, idProduct=PID) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC) or usb.core.find(idVendor=VID, idProduct=PID_GENERIC_TWO) or usb.core.find(idVendor=VID, idProduct=PID_W) or usb.core.find(idVendor=VID, idProduct=PID_WIRED)
     if dev is None:
         print("Xbox 360 controller / wireless receiver not found! Please reconnect your controller and try again.")
         print("If that doesn't work, find the VID and PID of your controller and replace PID and VID values in the script and retry!\n")
