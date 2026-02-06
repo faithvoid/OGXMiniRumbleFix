@@ -3,7 +3,7 @@ import usb.core, usb.util, time, sys, os, webbrowser
 VID = 0x045E # Microsoft VID, may require changing for third-party controllers.
 PID_WIRED = 0x028E # Genuine wired Xbox 360 controller PID
 PID_WIRELESS = 0x0719 # Genuine Xbox 360 wireless adapter PID
-PID_GENERIC = "A" # Third-party wireless adapter PID
+PID_GENERIC = 0x0291 # Third-party wireless adapter PID
 PID_GENERIC_TWO = 0x02AA # Additional third-party wireless adapter PID
 PID = 0x0289 # Third-party(?) Xbox 360 controller PID
 GAMEPAD_URL = "https://hardwaretester.com/gamepad"
